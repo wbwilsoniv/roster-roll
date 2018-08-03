@@ -21,7 +21,5 @@ CREATE TABLE games (
 CREATE TABLE attendance (
     id SERIAL PRIMARY KEY,
     games_id INT REFERENCES games(id),
-    player_id INT REFERENCES players(id),
-    player_name VARCHAR(255),
-    playing BOOLEAN
+    player_id INT REFERENCES players(id)
 );
