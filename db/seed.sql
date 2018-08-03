@@ -4,7 +4,7 @@ DELETE FROM players;
 DELETE FROM games;
 DELETE FROM attendance;
 
-INSERT INTO players (player_name, team_name) VALUES
+INSERT INTO players (name, team) VALUES
 (
     'John',
     'Sliders'
@@ -18,7 +18,7 @@ INSERT INTO players (player_name, team_name) VALUES
     'Sliders'
 );
 
-INSERT INTO games (gdate, gtime, home, team_name) VALUES
+INSERT INTO games (gdate, gtime, home, team) VALUES
 (
     '8/1/18',
     '8:00 PM',
@@ -38,16 +38,16 @@ INSERT INTO games (gdate, gtime, home, team_name) VALUES
     'Sliders'
 );
 
-INSERT INTO attendance (player_name, playing) VALUES
+INSERT INTO attendance (games_id, player_id) VALUES
 (
-    'John',
-    'true'
+    '1',
+    '1'
 ),
 (
-    'Tim',
-    'false'
+    '1',
+    '2'
 ),
 (
-    'Bob',
-    'true'
+    '1',
+    '3'
 );

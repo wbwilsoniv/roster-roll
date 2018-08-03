@@ -1,3 +1,6 @@
+DROP DATABASE IF EXISTS team_db;
+CREATE DATABASE team_db;
+
 \c team_db;
 
 DROP TABLE IF EXISTS players;
@@ -6,8 +9,8 @@ DROP TABLE IF EXISTS attendance;
 
 CREATE TABLE players (
     id SERIAL PRIMARY KEY,
-    player_name VARCHAR(255),
-    team_name VARCHAR(255)
+    name VARCHAR(255),
+    team VARCHAR(255)
 );
 
 CREATE TABLE games (
@@ -15,7 +18,7 @@ CREATE TABLE games (
     gdate DATE,
     gtime TIME,
     home BOOLEAN,
-    team_name VARCHAR(255)
+    team VARCHAR(255)
 );
 
 CREATE TABLE attendance (

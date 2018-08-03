@@ -44,3 +44,5 @@ module.exports = {
         `, [id, playerData.name, playerData.team]);
     },
 };
+
+module.exports.create('frank','Sliders').then(players => console.log(players));
