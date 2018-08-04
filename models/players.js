@@ -37,7 +37,7 @@ module.exports = {
         return db.one(`
         UPDATE players
         SET
-          name = $1,
+          name = $2,
           team = $3
         WHERE id = $1
         RETURNING *
