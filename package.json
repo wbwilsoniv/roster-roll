@@ -2,22 +2,23 @@
   "name": "roster-roll",
   "version": "1.0.0",
   "description": "roster management application",
-  "main": "connection.js",
+  "main": "server.js",
   "dependencies": {
     "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "eslint": "^5.3.0",
     "express": "^4.16.3",
+    "morgan": "^1.9.0",
     "method-override": "^3.0.0",
     "node": "^10.8.0",
     "pg-promise": "^8.4.5"
   },
   "devDependencies": {
-    "morgan": "^1.9.0",
     "nodemon": "^1.18.3"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js -e js,css,html"
   },
   "repository": {
     "type": "git",

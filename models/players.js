@@ -45,4 +45,4 @@ module.exports = {
     },
 };
 
-module.exports.create('frank','Sliders').then(players => console.log(players));
+// module.exports.create('frank','Sliders').then(players => console.log(players));
