@@ -1,0 +1,15 @@
+<%- include('../partials/boilerplateHead') %>
+<title>Show All Games</title>
+</head>
+<body>
+    <h1>Here are all the games</h1>
+    <div>
+        <% games.forEach((games) => { %>
+            <h4>Game Id: <%= games.id %></h4>
+            <h4> Game Date: <%= games.gdate %></h4>
+            <h4> Game Time: <%= games.gtime %></h4>
+            <h4> Home Game : <%= games.home %></h4>
+            <h4> Team : <%= games.team %></h4>            
+       <% }) %>
+    </div>
+<%- include('../partials/boilerplateFoot') %>

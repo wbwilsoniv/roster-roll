@@ -6,6 +6,7 @@ const logger = require('morgan');
 const path = require('path');
 
 const playerRouter = require('./routes/playerRouter');
+const gameRouter = require('./routes/gameRouter');
 
 const PORT = 3000;
 
@@ -17,5 +18,6 @@ app.use(logger('dev'));
 app.set('view engine', 'ejs');
 
 app.use('/players', playerRouter);
+app.use('/games', gameRouter);
 
 app.listen(PORT, () => console.log(`Listening on port: ${3000}`));

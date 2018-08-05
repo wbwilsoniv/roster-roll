@@ -15,8 +15,8 @@ CREATE TABLE players (
 
 CREATE TABLE games (
     id SERIAL PRIMARY KEY,
-    gdate DATE,
-    gtime TIME,
+    gdate VARCHAR(255),
+    gtime VARCHAR(255),
     home BOOLEAN,
     team VARCHAR(255)
 );
