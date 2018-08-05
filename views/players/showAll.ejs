@@ -1,0 +1,13 @@
+<%- include('../partials/boilerplateHead') %>
+<title>Document</title>
+</head>
+<body>
+    <h1>Here are all the players</h1>
+    <div>
+        <% players.forEach((players) => { %>
+            <h4>Player Id: <%= players.id %></h4>
+            <h4>Player Name: <%= players.name %></h4>
+            <h4>Player Team: <%= players.team %></h4>
+        <% }) %>
+    </div>
+<%- include('../partials/boilerplateFoot') %>
