@@ -11,15 +11,23 @@ module.exports = {
     },
 
     showOne(req, res) {
-        res.render('/players/showOne');
+        res.render('../views/players/showOne');
     },
 
     showNew(req, res) {
         res.render('../views/players/showNew');
     },
-    // redirects to created page for new player
+
+    showEdit(req, res) {
+        res.render(`../views/players/showEdit`)
+    },
+    // redirects to show all players after creating new player
     handleCreate(req, res) {
         res.redirect('/players');
+    },
+    // redirects to page of editted player after edit is complete.
+    handleUpdate(req, res) {
+        res.redirect(`/players`);
     },
 
     handleDestroy(req, res) {

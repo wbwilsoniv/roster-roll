@@ -22,11 +22,14 @@ playerRouter.route('/')
 
 playerRouter.get('/new', playerController.addNew, viewController.showNew);
 
+playerRouter.get('/:id/edit', playerController.findOne, viewController.showEdit);
+
 playerRouter.route('/:id')
   .get(
       playerController.findOne,
       viewController.showOne,
       viewController.show404)
-      .delete(playerController.destory, viewController.handleDestroy);
+      .delete(playerController.destroy, viewController.handleDestroy)
+      .put(playerController.update, viewController.handleUpdate);
 
       module.exports = playerRouter;

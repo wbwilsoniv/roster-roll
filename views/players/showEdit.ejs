@@ -1,0 +1,27 @@
+<%- include('../partials/boilerplateHead') %>
+<title>Edit Player</title>
+</head>
+<body>
+    <h1>Edit Player</h1>
+    <form method='POST' 
+    action='/players/<%= players.id %>?_method=PUT'>
+    <div>
+            <label for='name'>Name:  </label>
+            <input
+              value='<%= players.name %>'
+              type='text'
+              name='name'
+              id='name' />
+        </div>
+        <div>
+            <label for='team'>Team:  </label>
+            <input
+              value='<%= players.team %>'
+              type='text'
+              name='team'
+              id='team' />
+        </div>
+        <input type='submit' value='Update Player' />
+    </form>
+    <%- include('../partials/deleteButton', {id: players.id}) %>
+<%- include('../partials/boilerplateFoot') %>

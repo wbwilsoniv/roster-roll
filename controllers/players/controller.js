@@ -39,10 +39,18 @@ module.exports = {
         .catch(err => next(err));
     },
 
-    destory(req, res, next) {
+    update(req, res, next) {
+        const { id } = req.params;
+        const playerData  = req.body;
+        playerModel.update(id, playerData)
+        .then(() => next ())
+        .catch(err => next(err));
+    },
+
+    destroy(req, res, next) {
         const { id } = req.params;
         playerModel.delete(id)
-        .then((players) => next())
+        .then((player) => next())
         .catch(err => next(err));
     },
 };
