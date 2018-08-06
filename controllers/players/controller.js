@@ -12,10 +12,11 @@ module.exports = {
     findOne(req, res, next) {
         const { id } = req.params;
         playerModel.findOne(id)
-        .then((soda) => {
-            res.locals.player = player;
+        .then((players) => {
+            res.locals.players = players;
             next();
         })
         .catch(err => next(err));
-    }
+    },
+
 };

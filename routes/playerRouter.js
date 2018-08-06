@@ -14,4 +14,10 @@ playerRouter.get(playerController.findOne);
 playerRouter.route('/')
   .get(playerController.index, viewController.showAll, showJSON, viewController.show404);
 
+playerRouter.route('/:id')
+  .get(
+      playerController.findOne,
+      viewController.showOne,
+      viewController.show404);
+
 module.exports = playerRouter;

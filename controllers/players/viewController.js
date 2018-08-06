@@ -9,7 +9,10 @@ module.exports = {
             }
         });
     },
-    show404(req, res, next) {
+    showOne(req, res) {
+        res.render('players/showOne');
+    },
+    show404(req, res) {
         res.send(404);
-    }
+    },
 };
