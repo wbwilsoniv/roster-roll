@@ -1,0 +1,25 @@
+<%- include('../partials/boilerplateHead') %>
+<title>Show All Players</title>
+</head>
+<body>
+    <h1>Add New Player</h1>
+    <form method='POST' action="/players">
+      <div>
+          <label for='name'>Name:  </label>
+          <input
+            placeholder="Full Name"
+            type='text'
+            name='name'
+            id='name' />
+      </div>
+      <div>
+          <label for='team'>Team:  </label>
+          <input
+            placeholder="Team Name"
+            type='text'
+            name='team'
+            id='team' />
+      </div>
+      <input type="submit" value='Add New Player' />
+    </form>
+<%- include('../partials/boilerplateFoot') %>

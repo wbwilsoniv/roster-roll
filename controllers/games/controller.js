@@ -18,4 +18,10 @@ module.exports = {
     })
     .catch(err => next(err));
   },
+  destory(req, res, next) {
+    const { id } = req.params;
+    gameModel.delete(id)
+    .then((games) => next())
+    .catch(err => next(err));
+},
 };

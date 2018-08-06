@@ -9,10 +9,18 @@ const showJSON = (req, res) => {
     res.json(res.locals.data);
 };
 
-playerRouter.get(playerController.findOne);
+// playerRouter.get(playerController.findOne);
+
+// playerRouter.get('/new', viewController.showNew);
+
+// playerRouter.route('/new')
+// .get(playerController.index, viewController.handleCreate);
 
 playerRouter.route('/')
-  .get(playerController.index, viewController.showAll, showJSON, viewController.show404);
+.get(playerController.index, viewController.showAll, showJSON, viewController.show404)
+.post(playerController.create, viewController.handleCreate);
+
+playerRouter.get('/new', playerController.addNew, viewController.showNew);
 
 playerRouter.route('/:id')
   .get(
@@ -20,4 +28,5 @@ playerRouter.route('/:id')
       viewController.showOne,
       viewController.show404)
       .delete(playerController.destory, viewController.handleDestroy);
-module.exports = playerRouter;
+
+      module.exports = playerRouter;

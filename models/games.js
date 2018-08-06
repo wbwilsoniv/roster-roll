@@ -17,7 +17,7 @@ module.exports = {
     },
 
     create(gameData) {
-        return db.none(`
+        return db.one(`
         INSERT INTO games
         (gdate, gtime, home, team)
         VALUES

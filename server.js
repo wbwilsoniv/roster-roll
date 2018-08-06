@@ -16,6 +16,7 @@ app.use(methodOverride('_method'));
 app.use(logger('dev'));
 
 app.set('view engine', 'ejs');
+app.set("views", path.join(__dirname, 'views'));
 
 app.use('/players', playerRouter);
 app.use('/games', gameRouter);

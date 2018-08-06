@@ -17,7 +17,7 @@ module.exports = {
     },
 
     create(playerData) {
-        return db.none(`
+        return db.one(`
         INSERT INTO players
         (name, team)
         VALUES

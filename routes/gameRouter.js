@@ -17,5 +17,5 @@ gameRouter.route('/:id')
       gameController.findOne,
       viewController.showOne,
       viewController.show404)
-      .delete(gameController.destory, viewController.handleDestroy);
+    //   .delete(gameController.destory, viewController.handleDestroy);
 module.exports = gameRouter;
