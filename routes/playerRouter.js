@@ -18,6 +18,6 @@ playerRouter.route('/:id')
   .get(
       playerController.findOne,
       viewController.showOne,
-      viewController.show404);
-
+      viewController.show404)
+      .delete(playerController.destory, viewController.handleDestroy);
 module.exports = playerRouter;

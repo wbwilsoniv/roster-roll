@@ -9,9 +9,15 @@ module.exports = {
         }
     });
   },
+  
   showOne(req, res) {
       res.render('games/showOne');
   },
+
+  handleDestory(req, res) {
+      res.redirect('/games');
+  },
+
   show404(req, res) {
     res.send(404);
   },
