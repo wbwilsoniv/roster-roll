@@ -8,5 +8,8 @@ module.exports = {
                 res.json(res.locals.players);
             }
         });
+    },
+    show404(req, res, next) {
+        res.send(404);
     }
 };

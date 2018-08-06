@@ -9,4 +9,13 @@ module.exports = {
           })
           .catch(err => next(err));
     },
+    findOne(req, res, next) {
+        const { id } = req.params;
+        playerModel.findOne(id)
+        .then((soda) => {
+            res.locals.player = player;
+            next();
+        })
+        .catch(err => next(err));
+    }
 };

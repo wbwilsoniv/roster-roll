@@ -10,6 +10,6 @@ const showJSON = (req, res) => {
 };
 
 gameRouter.route('/')
-  .get(gameController.index, viewController.showAll, showJSON);
+  .get(gameController.index, viewController.showAll, showJSON, viewController.show404);
 
 module.exports = gameRouter;

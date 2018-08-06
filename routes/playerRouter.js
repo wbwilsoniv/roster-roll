@@ -9,7 +9,9 @@ const showJSON = (req, res) => {
     res.json(res.locals.data);
 };
 
+playerRouter.get(playerController.findOne);
+
 playerRouter.route('/')
-  .get(playerController.index, viewController.showAll, showJSON);
+  .get(playerController.index, viewController.showAll, showJSON, viewController.show404);
 
 module.exports = playerRouter;
