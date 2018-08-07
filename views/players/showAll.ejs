@@ -5,9 +5,9 @@
     <h1>Here are all the players</h1>
     <div>
         <% players.forEach((players) => { %>
-            <h4>Player Id: <%= players.id %></h4>
-            <h4>Player Name: <%= players.name %></h4>
-            <h4>Player Team: <%= players.team %></h4>
+            <h5 class="playerId"> Id: <%= players.id %></h4>
+            <h5 class="playerName">Name: <%= players.name %></h4>
+            <h5 class="playerTeam">Team: <%= players.team %></h4>
         <% }) %>
     </div>
 <%- include('../partials/boilerplateFoot') %>

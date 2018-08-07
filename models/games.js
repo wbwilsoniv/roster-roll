@@ -48,4 +48,4 @@ module.exports = {
 
 };
 
-module.exports.findAll().then(games => console.log(games));
+// module.exports.findAll().then(games => console.log(games));

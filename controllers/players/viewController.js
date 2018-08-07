@@ -25,11 +25,11 @@ module.exports = {
     handleCreate(req, res) {
         res.redirect('/players');
     },
-    // redirects to page of editted player after edit is complete.
+    // redirects to show players after edit is complete.
     handleUpdate(req, res) {
         res.redirect(`/players`);
     },
-
+    // redirects to 
     handleDestroy(req, res) {
         res.redirect('/players');
     },
