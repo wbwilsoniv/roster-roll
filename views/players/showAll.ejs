@@ -2,12 +2,14 @@
 <title>Show All Players</title>
 </head>
 <body>
-    <h1>Here are all the players</h1>
+    <h1>Roster-Roll</h1>
+    <p>Lite</p>
+    <h2>Here are all the players</h2>
     <div>
         <% players.forEach((players) => { %>
-            <h5 class="playerId"> Id: <%= players.id %></h4>
-            <h5 class="playerName">Name: <%= players.name %></h4>
-            <h5 class="playerTeam">Team: <%= players.team %></h4>
+            <h5 class="playerId"> Id: <%= players.id %></h5> 
+            <h5 class="playerName">Name: <%= players.name %></h5> 
+            <h5 class="playerTeam">Team: <%= players.team %></h5>
         <% }) %>
     </div>
 <%- include('../partials/boilerplateFoot') %>

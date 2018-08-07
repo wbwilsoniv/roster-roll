@@ -9,7 +9,7 @@
             <h4>Player Team: <%= players.team %></h4>          
     </div>
     <div>
-        <a href="/players<%= players.id%>/edit">Edit Player</a>
+        <a href="/players/<%= players.id%>/edit">Edit Player</a>
     </div>
 <%- include('../partials/deleteButton', {id: players.id}) %>
 <%- include('../partials/boilerplateFoot') %>
