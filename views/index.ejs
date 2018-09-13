@@ -1,9 +1,15 @@
-<% include('../partials/boilerplateFoot') %>
-
+<%- include('./partials/boilerplateHead') %>
+<title>Show All Players</title>
+</head>
+<body>
+    <h1>Roster-Roll</h1>
+    <p>Lite</p>
 <div>
-    <h1><%= message %></h1>
+    <h2><%= message %></h2>
 </div>
 
-<a href="/players">Show Players</a>
+<a href="/players">View Players</a>
 
-<% include('../partials/boilerplateFoot') %>
+<a href="/games">View Games</a>
+
+<%- include('./partials/boilerplateFoot') %>
