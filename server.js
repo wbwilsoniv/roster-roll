@@ -23,6 +23,12 @@ app.use('/players', playerRouter);
 app.use('/games', gameRouter);
 app.use(express.static('public'));
 
+app.get('/', (req, res) => {
+    res.render('index', {
+        message: 'Welcome',
+    });
+});
+
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}, in ${app.get('env')} mode.`);
 });
