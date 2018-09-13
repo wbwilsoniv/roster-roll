@@ -8,7 +8,7 @@ const express = require('express');
 const playerRouter = require('./routes/playerRouter');
 const gameRouter = require('./routes/gameRouter');
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -23,4 +23,6 @@ app.use('/players', playerRouter);
 app.use('/games', gameRouter);
 app.use(express.static('public'));
 
-app.listen(PORT, () => console.log(`Listening on port: ${3000}`));
+app.listen(PORT, () => {
+  console.log(`Listening on port: ${PORT}, in ${app.get('env')} mode.`);
+});
