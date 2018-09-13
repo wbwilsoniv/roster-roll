@@ -1,4 +1,3 @@
-\c team_db;
 
 DELETE FROM players;
 DELETE FROM games;
