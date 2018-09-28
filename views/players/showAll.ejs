@@ -10,6 +10,7 @@
             <h5 class="playerId"> Id: <%= players.id %></h5> 
             <h5 class="playerName">Name: <%= players.name %></h5> 
             <h5 class="playerTeam">Team: <%= players.team %></h5>
+            <a href="/players/<%= players.id %>">Show Player</a>
         <% }) %>
     </div>
     <a href="/players/new">Add New</a>
