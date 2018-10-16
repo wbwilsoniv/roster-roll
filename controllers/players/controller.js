@@ -1,6 +1,7 @@
 const playerModel = require('../../models/players');
 
 module.exports = {
+  // Index of all players
   index(req, res, next) {
     playerModel.findAll()
       .then((players) => {
@@ -9,7 +10,7 @@ module.exports = {
       })
       .catch(err => next(err));
   },
-
+  // Gets 1 player by player id
   findOne(req, res, next) {
     const { id } = req.params;
     playerModel.findOne(id)
@@ -19,7 +20,7 @@ module.exports = {
       })
       .catch(err => next(err));
   },
-
+  // Create new player
   addNew(req, res, next) {
     const player = {
       name: '',

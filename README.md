@@ -23,6 +23,7 @@ Functioning pages: /players
 ** Tech/framework: **
 - JavaScript
 - HTML/CSS
+- Bulma
 - Node
 - Express
 - PostgreSQL

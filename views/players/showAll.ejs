@@ -2,16 +2,26 @@
 <title>Show All Players</title>
 </head>
 <body>
-    <h1>Roster-Roll</h1>
-    <p>Lite</p>
-    <h2>Here are all the players</h2>
-    <div>
-        <% players.forEach((players) => { %>
-            <h5 class="playerId"> Id: <%= players.id %></h5> 
-            <h5 class="playerName">Name: <%= players.name %></h5> 
-            <h5 class="playerTeam">Team: <%= players.team %></h5>
-            <a href="/players/<%= players.id %>">Show Player</a>
-        <% }) %>
-    </div>
-    <a href="/players/new">Add New</a>
+    <section class="hero is-large">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">Roster-Roll</h1>
+                <p class="subtitle">Lite</p>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <h2 class="subtitle">Here are all the players</h2>
+            <div class="columns">
+                <% players.forEach((players) => { %>
+                    <div class="column"><p class="playerId"><strong>Id:</strong>  <%= players.id %></p></div> 
+                    <div class="column"><p class="playerName"><strong>Name:</strong> <%= players.name %></p></div> 
+                    <div class="column"><p class="playerTeam"><strong>Team:</strong> <%= players.team %></p></div>
+                    <div class="column"><a href="/players/<%= players.id %>">Show Player</a></div>
+                <% }) %>
+            </div>
+        </div>
+        <a href="/players/new">Add New</a>
+    </section>
 <%- include('../partials/boilerplateFoot') %>

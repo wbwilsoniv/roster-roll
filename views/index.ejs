@@ -2,14 +2,20 @@
 <title>Show All Players</title>
 </head>
 <body>
-    <h1>Roster-Roll</h1>
-    <p>Lite</p>
+    <section class="hero is-large">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">Roster-Roll</h1>
+                <p class="subtitle">Lite</p>
+            </div>
+        </div>
+    </section>
 <div>
     <h2><%= message %></h2>
 </div>
 
-<a href="/players">View Players</a>
+<a href="/players"><button class="button">View Players</button></a>
 
-<a href="/games">View Games</a>
+<a href="/games"><button class="button">View Games</button></a>
 
 <%- include('./partials/boilerplateFoot') %>
