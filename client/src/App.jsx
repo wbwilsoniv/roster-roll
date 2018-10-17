@@ -6,6 +6,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <div className="">
+          <img src="./Roster-Roll.svg" alt="Roster Roll logo" />
+        </div>
         <Home />
       </div>
     );
