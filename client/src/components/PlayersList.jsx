@@ -1,20 +1,12 @@
 import React from "react";
+import Player from "./Player";
 
-function PlayersList(props) {
-  const { players } = props.players;
-  return (
-    <div className="playerList">
-      {props.players.map(player => {
-        return (
-          <div className="players" key={player.id}>
-            <p>ID: {player.id}</p>
-            <p>NAME: {player.name}</p>
-            <p>TEAM: {player.team}</p>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
+const PlayersList = ({ players }) => (
+  <div className="playerList">
+    {players.map((player, i) => (
+      <Player key={i} {...player} />
+    ))}
+  </div>
+);
 
 export default PlayersList;
