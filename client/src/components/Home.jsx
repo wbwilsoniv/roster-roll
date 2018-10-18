@@ -7,7 +7,7 @@ function Home(props) {
         <div className="container">
           <div>
             <img
-              src="https://user-images.githubusercontent.com/38361826/47121662-815f1700-d241-11e8-8978-d43c2468357f.png"
+              src="https://user-images.githubusercontent.com/38361826/47166650-aba8e700-d2ca-11e8-8620-832918079818.png"
               alt="logo"
               style={{ maxWidth: `500px` }}
             />

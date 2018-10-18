@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Home from "./components/Home";
 import PlayersList from "./components/PlayersList";
+import GamesList from "./components/GamesList";
 import "./App.css";
 
 class App extends Component {
@@ -26,15 +27,24 @@ class App extends Component {
       ],
       games: [
         {
+          id: 1,
           gdate: "10/10/18",
           gtime: "8:00PM",
           home: false,
           team: "Sliders"
         },
         {
-          gdate: "10/10/18",
-          gtime: "8:00PM",
+          id: 2,
+          gdate: "10/18/18",
+          gtime: "7:00PM",
           home: false,
+          team: "Sliders"
+        },
+        {
+          id: 3,
+          gdate: "10/24/18",
+          gtime: "8:00PM",
+          home: true,
           team: "Sliders"
         }
       ]
@@ -48,6 +58,7 @@ class App extends Component {
         </div>
         <Home />
         <PlayersList players={this.state.players} />
+        <GamesList games={this.state.games} />
       </div>
     );
   }
