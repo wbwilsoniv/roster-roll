@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Home from "./components/Home";
 import PlayersList from "./components/PlayersList";
 import GamesList from "./components/GamesList";
+import NewPlayer from "./components/NewPlayer";
 import "./App.css";
 
 class App extends Component {
@@ -11,17 +12,17 @@ class App extends Component {
       players: [
         {
           id: 1,
-          name: "Tim",
+          firstName: "Tim",
           team: "Sliders"
         },
         {
           id: 2,
-          name: "Frank",
+          firstName: "Frank",
           team: "Sliders"
         },
         {
           id: 3,
-          name: "Johnny",
+          firstName: "Johnny",
           team: "Sliders"
         }
       ],
@@ -59,6 +60,7 @@ class App extends Component {
         <Home />
         <PlayersList players={this.state.players} />
         <GamesList games={this.state.games} />
+        <NewPlayer />
       </div>
     );
   }

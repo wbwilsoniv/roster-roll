@@ -1,0 +1,12 @@
+const players = {}
+
+// Takes games and players
+// filter players by team
+//  give players values of attending and asked
+// filter games by team
+//  forEach game, 
+//  create new object with a copy of the team roster 
+
+function takeRoll(team, game) {
+    return { attendance // }
+}

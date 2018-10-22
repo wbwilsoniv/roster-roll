@@ -1,10 +1,10 @@
 import React from "react";
 
-const Player = ({ id, name, team }) => (
+const Player = ({ id, firstName, team }) => (
   <div className="playerDiv">
     <div className="player" key={id}>
       <p>ID: {id}</p>
-      <p>NAME: {name}</p>
+      <p>NAME: {firstName}</p>
       <p>TEAM: {team}</p>
     </div>
   </div>
