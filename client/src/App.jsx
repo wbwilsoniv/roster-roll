@@ -3,6 +3,7 @@ import Home from "./components/Home";
 import PlayersList from "./components/PlayersList";
 import GamesList from "./components/GamesList";
 import NewPlayer from "./components/NewPlayer";
+import NewGame from "./components/NewGame";
 import "./App.css";
 
 class App extends Component {
@@ -51,6 +52,7 @@ class App extends Component {
       ]
     };
     this.handleCreatePlayer = this.handleCreatePlayer.bind(this);
+    this.handleCreateGame = this.handleCreateGame.bind(this);
   }
 
   handleCreatePlayer(player) {
@@ -59,6 +61,13 @@ class App extends Component {
       players: [...players, player]
     });
     console.log(players, player);
+  }
+
+  handleCreateGame(game) {
+    const games = this.state.games;
+    this.setState({
+      games: [...games, game]
+    });
   }
 
   render() {
@@ -71,6 +80,7 @@ class App extends Component {
         <PlayersList players={this.state.players} />
         <GamesList games={this.state.games} />
         <NewPlayer onSubmit={this.handleCreatePlayer} />
+        <NewGame onSubmit={this.handleCreateGame} />
       </div>
     );
   }
