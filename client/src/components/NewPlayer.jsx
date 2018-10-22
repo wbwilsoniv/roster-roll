@@ -8,7 +8,8 @@ class NewPlayer extends Component {
       team: ""
     };
 
-    this.handleInput = this.handleInputChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInputChange(evt) {
@@ -19,11 +20,17 @@ class NewPlayer extends Component {
       [name]: value
     });
   }
+
+  handleSubmit(evt) {
+    evt.preventDefault();
+    this.props.onSubmit(this.state);
+  }
+
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <div>
-          <label for="firstName">Name: </label>
+          <label>Name: </label>
           <input
             placeholder="First Name"
             type="text"
@@ -33,7 +40,7 @@ class NewPlayer extends Component {
           />
         </div>
         <div>
-          <label for="team">Team: </label>
+          <label>Team: </label>
           <input
             placeholder="Team Name"
             type="text"

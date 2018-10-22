@@ -50,7 +50,17 @@ class App extends Component {
         }
       ]
     };
+    this.handleCreatePlayer = this.handleCreatePlayer.bind(this);
   }
+
+  handleCreatePlayer(player) {
+    const players = this.state.players;
+    this.setState({
+      players: [...players, player]
+    });
+    console.log(players, player);
+  }
+
   render() {
     return (
       <div className="App">
@@ -60,7 +70,7 @@ class App extends Component {
         <Home />
         <PlayersList players={this.state.players} />
         <GamesList games={this.state.games} />
-        <NewPlayer />
+        <NewPlayer onSubmit={this.handleCreatePlayer} />
       </div>
     );
   }
