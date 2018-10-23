@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 
-class NewGame extends Component {
+class EditPlayer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      gdate: "",
-      gtime: "",
-      home: null,
-      team: ""
+      id: this.props.player.id,
+      firstName: this.props.player.firstName,
+      team: this.props.player.team
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -32,31 +31,14 @@ class NewGame extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <div>
-          <label>Date: </label>
+          <label>Name: </label>
           <input
-            placeholder="Date MM/DD/YY"
+            placeholder="First Name"
             type="text"
-            name="gdate"
-            value={this.state.gdate}
+            name="firstName"
+            value={this.state.firstName}
             onChange={this.handleInputChange}
           />
-        </div>
-        <div>
-          <label>TIME: </label>
-          <input
-            placeholder="Time 12/hr"
-            type="text"
-            name="gtime"
-            value={this.state.gtime}
-            onChange={this.handleInputChange}
-          />
-        </div>
-        <div>
-          <label>HOME: </label>
-          <select placeholder="Home Team?" onChange={this.handleInputChange}>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-          </select>
         </div>
         <div>
           <label>Team: </label>
@@ -68,10 +50,10 @@ class NewGame extends Component {
             onChange={this.handleInputChange}
           />
         </div>
-        <input type="submit" value="Add New Game" />
+        <input type="submit" value="Save Changes" />
       </form>
     );
   }
 }
 
-export default NewGame;
+export default EditPlayer;

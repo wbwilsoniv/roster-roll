@@ -1,48 +1,55 @@
-const db = require('../connection');
+const { db } = require('../config/connection');
 
-module.exports = {
-  findAll() {
-    return db.many(`
+function findAll() {
+  return db.many(`
         SELECT * 
         FROM players
+        ORDER BY team
         `);
-  },
+}
 
-  findOne(id) {
-    return db.one(`
+function findOne(id) {
+  return db.one(`
         SELECT *
         FROM players
         WHERE id = $1
         `, id);
-  },
+}
 
-  create(playerData) {
-    return db.one(`
+function createPlayer(player) {
+  return db.one(`
         INSERT INTO players
-        (name, team)
+        (firstName, team)
         VALUES
-        ($1, $2)
+        ($/firstName/, $/team/)
         RETURNING *
-        `, [playerData.name, playerData.team]);
-  },
+        `, player);
+}
 
-  delete(id) {
-    return db.one(`
+function deletePlayer(id) {
+  return db.none(`
         DELETE FROM players
         WHERE id = $1
         `, id);
-  },
+}
 
-  update(id, playerData) {
-    return db.one(`
+function updatePlayer(data, id) {
+  return db.one(`
         UPDATE players
         SET
-          name = $2,
-          team = $3
-        WHERE id = $1
+          firstName = $/firstName/,
+          team = $/team/
+        WHERE id = ${id}
         RETURNING *
-        `, [id, playerData.name, playerData.team]);
-  },
+        `, data);
+}
+
+module.exports = {
+  findAll,
+  findOne,
+  createPlayer,
+  deletePlayer,
+  updatePlayer,
 };
 
 // module.exports.create('frank','Sliders').then(players => console.log(players));

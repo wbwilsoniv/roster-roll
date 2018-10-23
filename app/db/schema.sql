@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS attendance;
 
 CREATE TABLE players (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255),
+    firstName VARCHAR(255),
     team VARCHAR(255)
 );
 
@@ -21,6 +21,6 @@ CREATE TABLE games (
 
 CREATE TABLE attendance (
     id SERIAL PRIMARY KEY,
-    games_id INT REFERENCES games(id),
+    game_id INT REFERENCES games(id),
     player_id INT REFERENCES players(id)
 );

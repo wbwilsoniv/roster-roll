@@ -1,10 +1,11 @@
-const db = require('../connection');
+const { db } = require('../config/connection');
 
 module.exports = {
   findAll() {
     return db.many(`
         SELECT * 
         FROM games
+        ORDER BY gdate
         `);
   },
 
@@ -27,7 +28,7 @@ module.exports = {
   },
 
   delete(id) {
-    return db.one(`
+    return db.none(`
         DELETE FROM games
         WHERE id = $1
         `, id);

@@ -1,36 +1,20 @@
 const express = require('express');
 
 const playerController = require('../controllers/players/controller');
-const viewController = require('../controllers/players/viewController');
 
 const playerRouter = express.Router();
 
-const showJSON = (req, res) => {
-  res.json(res.locals.data);
-};
-
-// playerRouter.get(playerController.findOne);
-
-// playerRouter.get('/new', viewController.showNew);
-
-// playerRouter.route('/new')
-// .get(playerController.index, viewController.handleCreate);
-
 playerRouter.route('/')
-  .get(playerController.index, viewController.showAll, showJSON, viewController.show404)
-  .post(playerController.create, viewController.handleCreate);
+  .get(playerController.showAll)
+  .post(playerController.createPlayer);
 
-playerRouter.get('/new', playerController.addNew, viewController.showNew);
+// playerRouter.get('/create').post(playerController.createPlayer);
 
-playerRouter.get('/:id/edit', playerController.findOne, viewController.showEdit);
+// playerRouter.get('/:id/edit', playerController.findOne);
 
 playerRouter.route('/:id')
-  .get(
-    playerController.findOne,
-    viewController.showOne,
-    viewController.show404,
-  )
-  .delete(playerController.destroy, viewController.handleDestroy)
-  .put(playerController.update, viewController.handleUpdate);
+  .get(playerController.showOne)
+  .delete(playerController.deletePlayer)
+  .put(playerController.updatePlayer);
 
 module.exports = playerRouter;

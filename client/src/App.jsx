@@ -4,56 +4,38 @@ import PlayersList from "./components/PlayersList";
 import GamesList from "./components/GamesList";
 import NewPlayer from "./components/NewPlayer";
 import NewGame from "./components/NewGame";
+// import EditPlayer from "./components/EditPlayer";
+import {
+  fetchPlayers
+  // fetchOnePlayer,
+  // savePlayer,
+  // fetchGames,
+  // fetchOneGame,
+  // saveGame
+} from "./services/api";
 import "./App.css";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      players: [
-        {
-          id: 1,
-          firstName: "Tim",
-          team: "Sliders"
-        },
-        {
-          id: 2,
-          firstName: "Frank",
-          team: "Sliders"
-        },
-        {
-          id: 3,
-          firstName: "Johnny",
-          team: "Sliders"
-        }
-      ],
-      games: [
-        {
-          id: 1,
-          gdate: "10/10/18",
-          gtime: "8:00PM",
-          home: false,
-          team: "Sliders"
-        },
-        {
-          id: 2,
-          gdate: "10/18/18",
-          gtime: "7:00PM",
-          home: false,
-          team: "Sliders"
-        },
-        {
-          id: 3,
-          gdate: "10/24/18",
-          gtime: "8:00PM",
-          home: true,
-          team: "Sliders"
-        }
-      ]
+      players: [],
+      games: []
     };
     this.handleCreatePlayer = this.handleCreatePlayer.bind(this);
     this.handleCreateGame = this.handleCreateGame.bind(this);
+    // this.handleEditPlayer = this.handleEditPlayer.bind(this);
   }
+
+  componentDidMount() {
+    fetchPlayers().then(data => this.setState({ players: data }));
+  }
+  // handleEditPlayer(player) {
+  //   // const player = this.state.players[0];
+  //   // this.setState({
+  //   //   player: player
+  //   // });
+  // }
 
   handleCreatePlayer(player) {
     const players = this.state.players;
@@ -81,6 +63,10 @@ class App extends Component {
         <GamesList games={this.state.games} />
         <NewPlayer onSubmit={this.handleCreatePlayer} />
         <NewGame onSubmit={this.handleCreateGame} />
+        {/* <EditPlayer
+          player={this.state.players[0]}
+          onSubmit={this.handleEditPlayer}
+        /> */}
       </div>
     );
   }

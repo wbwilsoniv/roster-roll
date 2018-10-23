@@ -1,34 +1,31 @@
-const app = require('express')();
-
-const bodyParser = require('body-parser');
-const methodOverride = require('method-override');
-const logger = require('morgan');
-const path = require('path');
 const express = require('express');
+const bodyParser = require('body-parser');
+const logger = require('morgan');
+const cors = require('cors');
 const playerRouter = require('./routes/playerRouter');
 const gameRouter = require('./routes/gameRouter');
 
-const PORT = process.env.PORT || 3000;
+const app = express();
 
-app.use(bodyParser.urlencoded({ extended: false }));
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`Listening on port: ${PORT}, in ${app.get('env')} mode.`);
+});
+
 app.use(bodyParser.json());
-app.use(methodOverride('_method'));
+app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(logger('dev'));
 
-
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.use(cors());
 
 app.use('/players', playerRouter);
 app.use('/games', gameRouter);
-app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.render('index', {
-        message: 'Welcome',
-    });
+  res.redirect('/players');
 });
 
-app.listen(PORT, () => {
-  console.log(`Listening on port: ${PORT}, in ${app.get('env')} mode.`);
+app.get('*', (req, res) => {
+  res.status(404).send({ message: 'Oops! Not found.' });
 });

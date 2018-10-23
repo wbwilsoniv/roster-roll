@@ -1,57 +1,64 @@
-const playerModel = require('../../models/players');
+const db = require('../../models/players');
+
+
+// Show all players
+function showAll(req, res) {
+  db.findAll()
+    .then((players) => {
+      res.json(players);
+    })
+    .catch(err => res.status(400).json({ message: '400', err }));
+}
+// Gets 1 player by player id
+function showOne(req, res) {
+  db.findOne(req.params.id)
+    .then((player) => {
+      res.json(player);
+    })
+    .catch(err => res.status(400).json({ message: '400', err }));
+}
+// Create new player
+// addNew(req, res, next) {
+//   const player = {
+//     firstName: '',
+//     team: '',
+//   };
+//   res.locals.player = player;
+//   next();
+// },
+
+function createPlayer(req, res) {
+  const playerData = req.body;
+  db.createPlayer(playerData)
+    .then((player) => {
+      res.json({
+        message: 'ok',
+        data: { player },
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json({ message: '400', err });
+    });
+}
+
+function updatePlayer(req, res) {
+  db.updatePlayer(req.body, req.params.id)
+    .then(player => res.json(player))
+    .catch(err => res.status(400).json({ message: '400', err }));
+}
+
+function deletePlayer(req, res) {
+  db.deletePlayer(req.params.id)
+    .then(() => {
+      res.json({ message: 'ok' });
+    });
+}
 
 module.exports = {
-  // Index of all players
-  index(req, res, next) {
-    playerModel.findAll()
-      .then((players) => {
-        res.locals.players = players;
-        next();
-      })
-      .catch(err => next(err));
-  },
-  // Gets 1 player by player id
-  findOne(req, res, next) {
-    const { id } = req.params;
-    playerModel.findOne(id)
-      .then((players) => {
-        res.locals.players = players;
-        next();
-      })
-      .catch(err => next(err));
-  },
-  // Create new player
-  addNew(req, res, next) {
-    const player = {
-      name: '',
-      team: '',
-    };
-    res.locals.player = player;
-    next();
-  },
-
-  create(req, res, next) {
-    const playerData = req.body;
-    playerModel.create(playerData)
-      .then((player) => {
-        res.locals.player = player;
-        next();
-      })
-      .catch(err => next(err));
-  },
-
-  update(req, res, next) {
-    const { id } = req.params;
-    const playerData = req.body;
-    playerModel.update(id, playerData)
-      .then(() => next())
-      .catch(err => next(err));
-  },
-
-  destroy(req, res, next) {
-    const { id } = req.params;
-    playerModel.delete(id)
-      .then(() => next())
-      .catch(err => next(err));
-  },
+  showAll,
+  showOne,
+  createPlayer,
+  updatePlayer,
+  deletePlayer,
 };
