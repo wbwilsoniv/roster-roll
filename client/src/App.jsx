@@ -6,7 +6,8 @@ import NewPlayer from "./components/NewPlayer";
 import NewGame from "./components/NewGame";
 // import EditPlayer from "./components/EditPlayer";
 import {
-  fetchPlayers
+  fetchPlayers,
+  fetchGames
   // fetchOnePlayer,
   // savePlayer,
   // fetchGames,
@@ -29,6 +30,7 @@ class App extends Component {
 
   componentDidMount() {
     fetchPlayers().then(data => this.setState({ players: data }));
+    fetchGames().then(data => this.setState({ games: data }));
   }
   // handleEditPlayer(player) {
   //   // const player = this.state.players[0];
