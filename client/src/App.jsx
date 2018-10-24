@@ -8,7 +8,8 @@ import NewGame from "./components/NewGame";
 import {
   fetchPlayers,
   fetchGames,
-  savePlayer
+  savePlayer,
+  saveGame
   // fetchOnePlayer,
   // savePlayer,
   // fetchGames,
@@ -25,7 +26,7 @@ class App extends Component {
       games: []
     };
     this.createPlayer = this.createPlayer.bind(this);
-    this.handleCreateGame = this.handleCreateGame.bind(this);
+    this.createGame = this.createGame.bind(this);
     // this.handleEditPlayer = this.handleEditPlayer.bind(this);
   }
 
@@ -42,6 +43,12 @@ class App extends Component {
   createPlayer(player) {
     savePlayer(player).then(data => {
       fetchPlayers().then(data => this.setState({ players: data }));
+    });
+  }
+
+  createGame(game) {
+    saveGame(game).then(data => {
+      fetchGames().then(data => this.setState({ games: data }));
     });
   }
 
@@ -70,7 +77,7 @@ class App extends Component {
         <PlayersList players={this.state.players} />
         <GamesList games={this.state.games} />
         <NewPlayer onSubmit={this.createPlayer} />
-        <NewGame onSubmit={this.handleCreateGame} />
+        <NewGame onSubmit={this.createGame} />
         {/* <EditPlayer
           player={this.state.players[0]}
           onSubmit={this.handleEditPlayer}
