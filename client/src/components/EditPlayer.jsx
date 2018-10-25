@@ -35,7 +35,7 @@ class EditPlayer extends Component {
 
   deletePlayer(evt) {
     evt.preventDefault();
-    this.props.delete(this.state.id);
+    this.props.deletePlayer(this.state.id);
   }
 
   render() {

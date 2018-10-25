@@ -45,7 +45,12 @@ class PlayersList extends Component {
 
   deletePlayer(id) {
     deletePlayer(id).then(data => {
-      fetchPlayers().then(data => this.setState({ players: data }));
+      fetchPlayers().then(data =>
+        this.setState({
+          players: data,
+          playerSelected: false
+        })
+      );
     });
   }
 
