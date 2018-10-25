@@ -20,7 +20,7 @@ function showOne(req, res) {
 // Create new player
 // addNew(req, res, next) {
 //   const player = {
-//     firstName: '',
+//     firstname: '',
 //     team: '',
 //   };
 //   res.locals.player = player;

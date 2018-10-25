@@ -4,17 +4,15 @@ import PlayersList from "./components/PlayersList";
 import GamesList from "./components/GamesList";
 import NewPlayer from "./components/NewPlayer";
 import NewGame from "./components/NewGame";
-// import EditPlayer from "./components/EditPlayer";
+import EditPlayer from "./components/EditPlayer";
 import {
   fetchPlayers,
   fetchGames,
   savePlayer,
-  saveGame
-  // fetchOnePlayer,
-  // savePlayer,
-  // fetchGames,
+  saveGame,
+  deletePlayer,
+  fetchOnePlayer
   // fetchOneGame,
-  // saveGame
 } from "./services/api";
 import "./App.css";
 
@@ -23,10 +21,11 @@ class App extends Component {
     super(props);
     this.state = {
       players: [],
-      games: []
+      games: [],
+      playerSelected: false
     };
-    this.createPlayer = this.createPlayer.bind(this);
     this.createGame = this.createGame.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
     // this.handleEditPlayer = this.handleEditPlayer.bind(this);
   }
 
@@ -40,15 +39,22 @@ class App extends Component {
   //   //   player: player
   //   // });
   // }
-  createPlayer(player) {
-    savePlayer(player).then(data => {
-      fetchPlayers().then(data => this.setState({ players: data }));
-    });
-  }
 
   createGame(game) {
     saveGame(game).then(data => {
       fetchGames().then(data => this.setState({ games: data }));
+    });
+  }
+
+  deletePlayer(id) {
+    deletePlayer(id).then(data => {
+      fetchPlayers().then(data => this.setState({ players: data }));
+    });
+  }
+
+  handleSelect(id) {
+    fetchOnePlayer(id).then(data => {
+      this.setState({ selectedPlayer: data });
     });
   }
 
@@ -74,14 +80,21 @@ class App extends Component {
           <img src="./Roster-Roll.svg" alt="Roster Roll logo" />
         </div>
         <Home />
-        <PlayersList players={this.state.players} />
+        <PlayersList
+          players={this.state.players}
+          // onClick={this.handleSelect}
+          handleSelect={this.handleSelect}
+        />
         <GamesList games={this.state.games} />
-        <NewPlayer onSubmit={this.createPlayer} />
+        {/* <NewPlayer onSubmit={this.createPlayer} /> */}
         <NewGame onSubmit={this.createGame} />
-        {/* <EditPlayer
-          player={this.state.players[0]}
-          onSubmit={this.handleEditPlayer}
-        /> */}
+        {this.state.playerSelected ? (
+          <EditPlayer
+            player={this.state.selectedPlayer}
+            onSubmit={this.handleEditPlayer}
+            deletePlayer={this.deletePlayer}
+          />
+        ) : null}
       </div>
     );
   }

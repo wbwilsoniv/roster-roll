@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS attendance;
 
 CREATE TABLE players (
     id SERIAL PRIMARY KEY,
-    firstName VARCHAR(255),
+    firstname VARCHAR(255),
     team VARCHAR(255)
 );
 

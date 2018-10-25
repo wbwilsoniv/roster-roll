@@ -5,12 +5,13 @@ class EditPlayer extends Component {
     super(props);
     this.state = {
       id: this.props.player.id,
-      firstName: this.props.player.firstName,
+      firstname: this.props.player.firstname,
       team: this.props.player.team
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.deletePlayer = this.deletePlayer.bind(this);
   }
 
   handleInputChange(evt) {
@@ -24,7 +25,17 @@ class EditPlayer extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.props.onSubmit(this.state);
+    const data = {
+      firstname: this.state.firstname,
+      team: this.state.team,
+      id: this.state.id
+    };
+    this.props.onSubmit(data);
+  }
+
+  deletePlayer(evt) {
+    evt.preventDefault();
+    this.props.delete(this.state.id);
   }
 
   render() {
@@ -35,8 +46,8 @@ class EditPlayer extends Component {
           <input
             placeholder="First Name"
             type="text"
-            name="firstName"
-            value={this.state.firstName}
+            name="firstname"
+            value={this.state.firstname}
             onChange={this.handleInputChange}
           />
         </div>
@@ -50,7 +61,12 @@ class EditPlayer extends Component {
             onChange={this.handleInputChange}
           />
         </div>
-        <input type="submit" value="Save Changes" />
+        <button type="submit" className="button">
+          Save
+        </button>
+        <button className="button" onClick={this.deletePlayer}>
+          Delete
+        </button>
       </form>
     );
   }

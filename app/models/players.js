@@ -19,9 +19,9 @@ function findOne(id) {
 function createPlayer(player) {
   return db.one(`
         INSERT INTO players
-        (firstName, team)
+        (firstname, team)
         VALUES
-        ($/firstName/, $/team/)
+        ($/firstname/, $/team/)
         RETURNING *
         `, player);
 }
@@ -37,7 +37,7 @@ function updatePlayer(data, id) {
   return db.one(`
         UPDATE players
         SET
-          firstName = $/firstName/,
+          firstname = $/firstname/,
           team = $/team/
         WHERE id = ${id}
         RETURNING *

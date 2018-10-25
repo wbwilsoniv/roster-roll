@@ -3,7 +3,7 @@ DELETE FROM players;
 DELETE FROM games;
 DELETE FROM attendance;
 
-INSERT INTO players (firstName, team) VALUES
+INSERT INTO players (firstname, team) VALUES
 (
     'John',
     'Sliders'

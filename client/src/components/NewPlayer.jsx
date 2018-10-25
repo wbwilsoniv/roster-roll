@@ -4,7 +4,7 @@ class NewPlayer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: "",
+      firstname: "",
       team: ""
     };
 
@@ -34,8 +34,8 @@ class NewPlayer extends Component {
           <input
             placeholder="First Name"
             type="text"
-            name="firstName"
-            value={this.state.firstName}
+            name="firstname"
+            value={this.state.firstname}
             onChange={this.handleInputChange}
           />
         </div>

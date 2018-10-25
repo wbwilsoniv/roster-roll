@@ -28,6 +28,32 @@ export function savePlayer(player) {
     .then(resp => resp.json());
 };
 
+export function updatePlayer(player) {
+    const opts = {
+        method: 'PUT',
+        body: JSON.stringify(player),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    return fetch(`${BASE_URL}/players/${player.id}`, opts)
+    .then(resp => resp.json());
+}
+
+export function deletePlayer(id) {
+    const opts ={
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    return fetch(`${BASE_URL}/players/${id}`, opts)
+    .then(resp => "deleted")
+    .catch(err => {
+        throw Error(err);
+    })
+};
+
 export function fetchGames() {
     return fetch(`${BASE_URL}/games`)
     .then(resp => resp.json())
