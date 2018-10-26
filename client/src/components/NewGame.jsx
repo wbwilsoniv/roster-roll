@@ -31,8 +31,8 @@ class NewGame extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <div>
-          <label>Date: </label>
+        <div className="field">
+          <label className="label">Date: </label>
           <input
             placeholder="Date MM/DD/YY"
             type="text"
@@ -41,8 +41,8 @@ class NewGame extends Component {
             onChange={this.handleInputChange}
           />
         </div>
-        <div>
-          <label>TIME: </label>
+        <div className="field">
+          <label className="label">TIME: </label>
           <input
             placeholder="Time 12/hr"
             type="text"
@@ -51,15 +51,15 @@ class NewGame extends Component {
             onChange={this.handleInputChange}
           />
         </div>
-        <div>
-          <label>HOME: </label>
+        <div className="field">
+          <label className="label">HOME: </label>
           <select placeholder="Home Team?" onChange={this.handleInputChange}>
             <option value="true">Yes</option>
             <option value="false">No</option>
           </select>
         </div>
-        <div>
-          <label>Team: </label>
+        <div className="field">
+          <label className="label">Team: </label>
           <input
             placeholder="Team Name"
             type="text"
@@ -68,7 +68,9 @@ class NewGame extends Component {
             onChange={this.handleInputChange}
           />
         </div>
-        <input type="submit" value="Add New Game" />
+        <button type="submit" className="button">
+          ADD
+        </button>
       </form>
     );
   }

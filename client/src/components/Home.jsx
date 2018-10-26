@@ -2,12 +2,12 @@ import React from "react";
 
 function Home(props) {
   return (
-    <section className="hero is-large">
+    <section className="hero is-small">
       <div className="hero-body">
         <div className="container">
           <div>
             <img
-              src="https://user-images.githubusercontent.com/38361826/47182157-c2fbca80-d2f2-11e8-96c1-de28bb813170.png"
+              src="https://user-images.githubusercontent.com/38361826/47593746-82313080-d946-11e8-868d-8fef1bd919b9.png"
               alt="logo"
               style={{ maxWidth: `500px` }}
             />

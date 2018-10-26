@@ -28,29 +28,42 @@ class NewPlayer extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
-          <label>Name: </label>
-          <input
-            placeholder="First Name"
-            type="text"
-            name="firstname"
-            value={this.state.firstname}
-            onChange={this.handleInputChange}
-          />
-        </div>
-        <div>
-          <label>Team: </label>
-          <input
-            placeholder="Team Name"
-            type="text"
-            name="team"
-            value={this.state.team}
-            onChange={this.handleInputChange}
-          />
-        </div>
-        <input type="submit" value="Add New Player" />
-      </form>
+      <div className="field">
+        <form onSubmit={this.handleSubmit}>
+          <label className="label">Add Player</label>
+          <div className="field">
+            <label className="label">Name: </label>
+            <div className="control">
+              <input
+                placeholder="First Name"
+                className="input"
+                type="text"
+                name="firstname"
+                value={this.state.firstname}
+                onChange={this.handleInputChange}
+              />
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Team: </label>
+            <div className="control">
+              <input
+                placeholder="Team Name"
+                className="input"
+                type="text"
+                name="team"
+                value={this.state.team}
+                onChange={this.handleInputChange}
+              />
+            </div>
+          </div>
+          <div className="control">
+            <button type="submit" className="button">
+              Create
+            </button>
+          </div>
+        </form>
+      </div>
     );
   }
 }

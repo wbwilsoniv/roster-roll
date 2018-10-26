@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from "./components/Home";
 import PlayersList from "./components/PlayersList";
 import GamesList from "./components/GamesList";
@@ -71,20 +72,38 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="">
-          <img src="./Roster-Roll.svg" alt="Roster Roll logo" />
+      <Router>
+        <div className="App">
+          <div className="container has-background-danger">
+            <header className="container is-medium has-background-danger">
+              <div className="field is-grouped is-centered">
+                <div className="control">
+                  <Link to="/">
+                    <button className="button is-info is-rounded">Home</button>
+                  </Link>
+                </div>
+                <div className="control">
+                  <Link to="/players">
+                    <button className="button is-info is-rounded">
+                      Players
+                    </button>
+                  </Link>
+                </div>
+                <div className="control">
+                  <Link to="/games">
+                    <button className="button is-info is-rounded">Games</button>
+                  </Link>
+                </div>
+              </div>
+            </header>
+          </div>
+          <div>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/players" component={PlayersList} />
+            <Route exact path="/games" component={GamesList} />
+          </div>
         </div>
-        <Home />
-        <PlayersList
-          players={this.state.players}
-          // onClick={this.handleSelect}
-          handleSelect={this.handleSelect}
-        />
-        <GamesList games={this.state.games} />
-        {/* <NewPlayer onSubmit={this.createPlayer} /> */}
-        {/* <NewGame onSubmit={this.createGame} /> */}
-      </div>
+      </Router>
     );
   }
 }
