@@ -81,3 +81,15 @@ export function saveGame(game) {
     return fetch(`${BASE_URL}/games`, opts)
     .then(resp => resp.json());
 };
+
+export function updateGame(game) {
+    const opts = {
+        method: 'PUT',
+        body: JSON.stringify(game),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    return fetch(`${BASE_URL}/games/${game.id}`, opts)
+    .then(resp => resp.json());
+};

@@ -30,9 +30,7 @@ function createGame(req, res) {
 }
 
 function updateGame(req, res) {
-  const { id } = req.params;
-  const gameData = req.body;
-  db.update(id, gameData)
+  db.update(req.body, req.params.id)
     .then(game => res.json(game))
     .catch(err => res.status(400).json({ message: '400', err }));
 }

@@ -34,17 +34,17 @@ module.exports = {
         `, id);
   },
 
-  update(id, gameData) {
+  update(data, id) {
     return db.one(`
         UPDATE games
         SET
-          gdate = $2,
-          gtime = $3
-          home = $4
-          team = $5
-        WHERE id = $1
+          gdate = $/gdate/,
+          gtime = $/gtime/,
+          home = $/home/,
+          team = $/team/
+        WHERE id = ${id}
         RETURNING *
-        `, [id, gameData.gdate, gameData.gtime, gameData.home, gameData.team]);
+        `, data);
   },
 
 };

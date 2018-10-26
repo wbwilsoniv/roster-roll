@@ -2,13 +2,9 @@ import React, { Component } from "react";
 import Home from "./components/Home";
 import PlayersList from "./components/PlayersList";
 import GamesList from "./components/GamesList";
-import NewPlayer from "./components/NewPlayer";
-import NewGame from "./components/NewGame";
-import EditPlayer from "./components/EditPlayer";
 import {
   fetchPlayers,
   fetchGames,
-  savePlayer,
   saveGame,
   deletePlayer,
   fetchOnePlayer
@@ -87,14 +83,7 @@ class App extends Component {
         />
         <GamesList games={this.state.games} />
         {/* <NewPlayer onSubmit={this.createPlayer} /> */}
-        <NewGame onSubmit={this.createGame} />
-        {this.state.playerSelected ? (
-          <EditPlayer
-            player={this.state.selectedPlayer}
-            onSubmit={this.handleEditPlayer}
-            deletePlayer={this.deletePlayer}
-          />
-        ) : null}
+        {/* <NewGame onSubmit={this.createGame} /> */}
       </div>
     );
   }
