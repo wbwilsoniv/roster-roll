@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Game from "./Game";
 import NewGame from "./NewGame";
 import EditGame from "./EditGame";
-import { fetchGames, saveGame, updateGame } from "../services/api";
+import { fetchGames, saveGame, updateGame, deleteGame } from "../services/api";
 
 class GamesList extends Component {
   constructor(props) {
@@ -15,6 +15,7 @@ class GamesList extends Component {
     this.handleSelectGame = this.handleSelectGame.bind(this);
     this.createGame = this.createGame.bind(this);
     this.updateGame = this.updateGame.bind(this);
+    this.deleteGame = this.deleteGame.bind(this);
   }
 
   componentDidMount() {
@@ -34,6 +35,17 @@ class GamesList extends Component {
         gameSelected: false
       });
       fetchGames().then(data => this.setState({ games: data }));
+    });
+  }
+
+  deleteGame(id) {
+    deleteGame(id).then(data => {
+      fetchGames().then(data =>
+        this.setState({
+          games: data,
+          gameSelected: false
+        })
+      );
     });
   }
 
@@ -61,7 +73,11 @@ class GamesList extends Component {
           </div>
         ))}
         {this.state.gameSelected ? (
-          <EditGame game={this.state.selectedGame} onSubmit={this.updateGame} />
+          <EditGame
+            game={this.state.selectedGame}
+            onSubmit={this.updateGame}
+            deleteGame={this.deleteGame}
+          />
         ) : null}
         <NewGame onSubmit={this.createGame} />
       </div>

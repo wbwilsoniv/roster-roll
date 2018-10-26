@@ -93,3 +93,17 @@ export function updateGame(game) {
     return fetch(`${BASE_URL}/games/${game.id}`, opts)
     .then(resp => resp.json());
 };
+
+export function deleteGame(id) {
+    const opts ={
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    return fetch(`${BASE_URL}/games/${id}`, opts)
+    .then(resp => "deleted")
+    .catch(err => {
+        throw Error(err);
+    })
+};

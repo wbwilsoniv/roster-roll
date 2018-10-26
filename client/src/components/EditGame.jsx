@@ -13,6 +13,16 @@ class EditGame extends Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.deleteGame = this.deleteGame.bind(this);
+  }
+
+  handleInputChange(evt) {
+    const target = evt.target;
+    const name = target.name;
+    const value = target.value;
+    this.setState({
+      [name]: value
+    });
   }
 
   handleSubmit(evt) {
@@ -27,13 +37,9 @@ class EditGame extends Component {
     this.props.onSubmit(data);
   }
 
-  handleInputChange(evt) {
-    const target = evt.target;
-    const name = target.name;
-    const value = target.value;
-    this.setState({
-      [name]: value
-    });
+  deleteGame(evt) {
+    evt.preventDefault();
+    this.props.deleteGame(this.state.id);
   }
 
   render() {
@@ -78,6 +84,9 @@ class EditGame extends Component {
         </div>
         <button type="submit" className="button" value="Add New Game">
           Save
+        </button>
+        <button className="button" onClick={this.deleteGame}>
+          Delete
         </button>
       </form>
     );
