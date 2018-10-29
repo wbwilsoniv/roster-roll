@@ -73,23 +73,32 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
-          <div className="container has-background-danger">
+        <div className="main">
+          <div className="navbar is-light">
+            <div class="navbar-brand">
+              <div class="navbar-item">
+                <img
+                  src="https://user-images.githubusercontent.com/38361826/47593746-82313080-d946-11e8-868d-8fef1bd919b9.png"
+                  alt="logo"
+                  style={{ width: `auto` }}
+                />
+              </div>
+            </div>
             <header className="container is-medium has-background-danger">
-              <div className="field is-grouped is-centered">
-                <div className="control">
+              <div className="level is-grouped is-centered">
+                <div className="level-item">
                   <Link to="/">
                     <button className="button is-info is-rounded">Home</button>
                   </Link>
                 </div>
-                <div className="control">
+                <div className="level-item">
                   <Link to="/players">
                     <button className="button is-info is-rounded">
                       Players
                     </button>
                   </Link>
                 </div>
-                <div className="control">
+                <div className="level-item">
                   <Link to="/games">
                     <button className="button is-info is-rounded">Games</button>
                   </Link>

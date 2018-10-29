@@ -4,7 +4,7 @@ function Home(props) {
   return (
     <section className="hero is-small">
       <div className="hero-body">
-        <div className="container">
+        <div className="container has-text-centered">
           <div>
             <img
               src="https://user-images.githubusercontent.com/38361826/47593746-82313080-d946-11e8-868d-8fef1bd919b9.png"

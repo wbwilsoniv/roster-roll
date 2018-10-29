@@ -1,13 +1,11 @@
 import React from "react";
 
 const Player = ({ id, firstname, team }) => (
-  <div className="playerDiv">
-    <div className="player" key={id}>
-      <p>ID: {id}</p>
-      <p>NAME: {firstname}</p>
-      <p>TEAM: {team}</p>
-    </div>
-  </div>
+  <span className="playerRow" key={id}>
+    <th>{id}</th>
+    <td> {firstname}</td>
+    <td>{team}</td>
+  </span>
 );
 
 export default Player;

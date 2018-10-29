@@ -14,6 +14,16 @@ class EditPlayer extends Component {
     this.deletePlayer = this.deletePlayer.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.player.id !== prevProps.player.id) {
+      this.setState({
+        id: this.props.player.id,
+        firstname: this.props.player.firstname,
+        team: this.props.player.team
+      });
+    }
+  }
+
   handleInputChange(evt) {
     const target = evt.target;
     const name = target.name;
@@ -40,34 +50,45 @@ class EditPlayer extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
-          <label>Name: </label>
-          <input
-            placeholder="First Name"
-            type="text"
-            name="firstname"
-            value={this.state.firstname}
-            onChange={this.handleInputChange}
-          />
-        </div>
-        <div>
-          <label>Team: </label>
-          <input
-            placeholder="Team Name"
-            type="text"
-            name="team"
-            value={this.state.team}
-            onChange={this.handleInputChange}
-          />
-        </div>
-        <button type="submit" className="button">
-          Save
-        </button>
-        <button className="button" onClick={this.deletePlayer}>
-          Delete
-        </button>
-      </form>
+      <div className="field">
+        <form onSubmit={this.handleSubmit}>
+          <label className="label">Edit Player</label>
+          <div className="field">
+            <label className="label">Name: </label>
+            <div className="control">
+              <input
+                placeholder="First Name"
+                className="input"
+                type="text"
+                name="firstname"
+                value={this.state.firstname}
+                onChange={this.handleInputChange}
+              />
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Team: </label>
+            <div className="control">
+              <input
+                placeholder="Team Name"
+                className="input"
+                type="text"
+                name="team"
+                value={this.state.team}
+                onChange={this.handleInputChange}
+              />
+            </div>
+          </div>
+          <div className="control">
+            <button type="submit" className="button">
+              Save
+            </button>
+            <button className="button" onClick={this.deletePlayer}>
+              Delete
+            </button>
+          </div>
+        </form>
+      </div>
     );
   }
 }
