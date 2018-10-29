@@ -57,7 +57,7 @@ INSERT INTO games (gdate, gtime, home, team) VALUES
     'Beavers'
 ),
 (
-    '8/08/18',
+    '08/08/18',
     '7:00 PM',
     'false',
     'Hogs'
