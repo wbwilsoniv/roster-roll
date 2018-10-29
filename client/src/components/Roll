@@ -1,0 +1,55 @@
+const players = {}
+
+// Takes games and players
+// filter players by team
+//  give players values of attending and asked
+// filter games by team
+//  forEach game, 
+//  create new object with a copy of the team roster 
+
+function takeRoll(team, game) {
+    return { attendance // }
+}
+
+SAMPLE DATA:
+
+players: [
+        {
+          id: 1,
+          firstname: "Tim",
+          team: "Sliders"
+        },
+        {
+          id: 2,
+          firstname: "Frank",
+          team: "Sliders"
+        },
+        {
+          id: 3,
+          firstname: "Johnny",
+          team: "Sliders"
+        }
+      ],
+      games: [
+        {
+          id: 1,
+          gdate: "10/10/18",
+          gtime: "8:00PM",
+          home: false,
+          team: "Sliders"
+        },
+        {
+          id: 2,
+          gdate: "10/18/18",
+          gtime: "7:00PM",
+          home: false,
+          team: "Sliders"
+        },
+        {
+          id: 3,
+          gdate: "10/24/18",
+          gtime: "8:00PM",
+          home: true,
+          team: "Sliders"
+        }
+      ]
