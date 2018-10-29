@@ -79,13 +79,20 @@ class EditPlayer extends Component {
               />
             </div>
           </div>
-          <div className="control">
-            <button type="submit" className="button">
-              Save
-            </button>
-            <button className="button" onClick={this.deletePlayer}>
-              Delete
-            </button>
+          <div className="field is-grouped">
+            <div className="control">
+              <button type="submit" className="button is-small is-success">
+                Save
+              </button>
+            </div>
+            <div className="control">
+              <button
+                className="button is-small is-danger"
+                onClick={this.deletePlayer}
+              >
+                Delete
+              </button>
+            </div>
           </div>
         </form>
       </div>

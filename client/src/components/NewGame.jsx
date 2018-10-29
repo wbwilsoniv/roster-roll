@@ -30,48 +30,68 @@ class NewGame extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div className="field">
-          <label className="label">Date: </label>
-          <input
-            placeholder="Date MM/DD/YY"
-            type="text"
-            name="gdate"
-            value={this.state.gdate}
-            onChange={this.handleInputChange}
-          />
-        </div>
-        <div className="field">
-          <label className="label">TIME: </label>
-          <input
-            placeholder="Time 12/hr"
-            type="text"
-            name="gtime"
-            value={this.state.gtime}
-            onChange={this.handleInputChange}
-          />
-        </div>
-        <div className="field">
-          <label className="label">HOME: </label>
-          <select placeholder="Home Team?" onChange={this.handleInputChange}>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-          </select>
-        </div>
-        <div className="field">
-          <label className="label">Team: </label>
-          <input
-            placeholder="Team Name"
-            type="text"
-            name="team"
-            value={this.state.team}
-            onChange={this.handleInputChange}
-          />
-        </div>
-        <button type="submit" className="button">
-          ADD
-        </button>
-      </form>
+      <div className="field">
+        <form onSubmit={this.handleSubmit}>
+          <label className="label">New Game</label>
+          <div className="field">
+            <label className="label">Date: </label>
+            <div className="control">
+              <input
+                placeholder="Date MM/DD/YY"
+                type="text"
+                name="gdate"
+                className="input"
+                value={this.state.gdate}
+                onChange={this.handleInputChange}
+              />
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Time: </label>
+            <div className="control">
+              <input
+                placeholder="Time 12/hr"
+                type="text"
+                name="gtime"
+                className="input"
+                value={this.state.gtime}
+                onChange={this.handleInputChange}
+              />
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Home: </label>
+            <div className="select">
+              <select
+                className="input"
+                placeholder="Home Team?"
+                onChange={this.handleInputChange}
+              >
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+            </div>
+          </div>
+          <div className="field">
+            <label className="label">Team: </label>
+            <div className="control">
+              <input
+                placeholder="Team Name"
+                type="text"
+                name="team"
+                className="input"
+                value={this.state.team}
+                onChange={this.handleInputChange}
+              />
+            </div>
+          </div>
+          <div className="control">
+            <button type="submit" className="button is-small is-success">
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
     );
   }
 }

@@ -134,7 +134,7 @@ class PlayersList extends Component {
                   deletePlayer={this.deletePlayer}
                 />
                 <button
-                  className="button is-small"
+                  className="button is-small is-danger is-outlined"
                   onClick={() => this.handleCancelEdit()}
                 >
                   Cancel
@@ -145,19 +145,21 @@ class PlayersList extends Component {
               <div>
                 <NewPlayer onSubmit={this.createPlayer} />
                 <button
-                  className="button is-small"
+                  className="button is-small is-danger is-outlined"
                   onClick={() => this.handleCancelNew()}
                 >
                   Cancel
                 </button>
               </div>
             ) : (
-              <button
-                className="button is-small"
-                onClick={() => this.handleShowNew()}
-              >
-                Add New
-              </button>
+              <div className="container">
+                <button
+                  className="button is-small is-info is-outlined"
+                  onClick={() => this.handleShowNew()}
+                >
+                  Add New
+                </button>
+              </div>
             )}
           </div>
         </div>

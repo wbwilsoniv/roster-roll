@@ -58,8 +58,8 @@ class NewPlayer extends Component {
             </div>
           </div>
           <div className="control">
-            <button type="submit" className="button">
-              Create
+            <button type="submit" className="button is-small is-success">
+              Save
             </button>
           </div>
         </form>
