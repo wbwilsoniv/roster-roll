@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import Game from "./Game";
 import NewGame from "./NewGame";
 import EditGame from "./EditGame";
+import Loader from "./Loader";
 import { fetchGames, saveGame, updateGame, deleteGame } from "../services/api";
 
 class GamesList extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: true,
       games: [],
       selectedGame: {},
       gameSelected: false,
@@ -23,7 +25,7 @@ class GamesList extends Component {
   }
 
   componentDidMount() {
-    fetchGames().then(data => this.setState({ games: data }));
+    fetchGames().then(data => this.setState({ isLoading: false, games: data }));
   }
 
   createGame(game) {
@@ -79,80 +81,84 @@ class GamesList extends Component {
 
   render() {
     const games = this.state.games;
-    return (
-      <div className="section">
-        <div className="columns is-centered">
-          <div className="column is-narrow">
-            <h1 className="title">Schedule</h1>
-            <table className="table is-striped">
-              <thead>
-                <tr>
+    if (this.state.isLoading) {
+      return <Loader />;
+    } else {
+      return (
+        <div className="section">
+          <div className="columns is-centered">
+            <div className="column is-narrow">
+              <h1 className="title">Schedule</h1>
+              <table className="table is-striped">
+                <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Home</th>
-                    <th>Team</th>
-                    <th> </th>
+                    <tr>
+                      <th>ID</th>
+                      <th>Date</th>
+                      <th>Time</th>
+                      <th>Home</th>
+                      <th>Team</th>
+                      <th> </th>
+                    </tr>
                   </tr>
-                </tr>
-              </thead>
-              {games.map(game => (
-                <tbody>
-                  <tr>
-                    <Game key={game.id} {...game} />
-                    <td>
-                      <button
-                        className="button is-small"
-                        value={game}
-                        onClick={() => this.handleSelectGame(game)}
-                      >
-                        Edit
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              ))}
-            </table>
-            {this.state.gameSelected ? (
-              <div>
-                <EditGame
-                  game={this.state.selectedGame}
-                  onSubmit={this.updateGame}
-                  deleteGame={this.deleteGame}
-                />
-                <button
-                  className="button is-small is-danger is-outlined"
-                  onClick={() => this.handleCancelEdit()}
-                >
-                  Cancel
-                </button>
-              </div>
-            ) : null}
-            {this.state.showCreateGame ? (
-              <div>
-                <NewGame onSubmit={this.createGame} />
-                <button
-                  className="button is-small is-danger is-outlined"
-                  onClick={() => this.handleCancelNew()}
-                >
-                  Cancel
-                </button>
-              </div>
-            ) : (
-              <div className="container">
-                <button
-                  className="button is-small is-info is-outlined"
-                  onClick={() => this.handleShowNew()}
-                >
-                  Add New
-                </button>
-              </div>
-            )}
+                </thead>
+                {games.map(game => (
+                  <tbody>
+                    <tr>
+                      <Game key={game.id} {...game} />
+                      <td>
+                        <button
+                          className="button is-small"
+                          value={game}
+                          onClick={() => this.handleSelectGame(game)}
+                        >
+                          Edit
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                ))}
+              </table>
+              {this.state.gameSelected ? (
+                <div>
+                  <EditGame
+                    game={this.state.selectedGame}
+                    onSubmit={this.updateGame}
+                    deleteGame={this.deleteGame}
+                  />
+                  <button
+                    className="button is-small is-danger is-outlined"
+                    onClick={() => this.handleCancelEdit()}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              ) : null}
+              {this.state.showCreateGame ? (
+                <div>
+                  <NewGame onSubmit={this.createGame} />
+                  <button
+                    className="button is-small is-danger is-outlined"
+                    onClick={() => this.handleCancelNew()}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              ) : (
+                <div className="container">
+                  <button
+                    className="button is-small is-info is-outlined"
+                    onClick={() => this.handleShowNew()}
+                  >
+                    Add New
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 export default GamesList;

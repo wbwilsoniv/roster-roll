@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Player from "./Player";
 import EditPlayer from "./EditPlayer";
 import NewPlayer from "./NewPlayer";
+import Loader from "./Loader";
 import {
   fetchPlayers,
   savePlayer,
@@ -13,6 +14,7 @@ class PlayersList extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: true,
       players: [],
       selectedPlayer: {},
       playerSelected: false,
@@ -27,7 +29,9 @@ class PlayersList extends Component {
   }
 
   componentDidMount() {
-    fetchPlayers().then(data => this.setState({ players: data }));
+    fetchPlayers().then(data =>
+      this.setState({ isLoading: false, players: data })
+    );
   }
 
   createPlayer(player) {
@@ -87,84 +91,88 @@ class PlayersList extends Component {
 
   render() {
     const players = this.state.players;
-    return (
-      <div className="section">
-        <div className="columns is-centered">
-          <div className="column is-narrow">
-            <h1 className="title">Player List</h1>
-            <table className="table is-striped">
-              <thead>
-                <tr>
+    if (this.state.isLoading) {
+      return <Loader />;
+    } else {
+      return (
+        <div className="section">
+          <div className="columns is-centered">
+            <div className="column is-narrow">
+              <h1 className="title">Player List</h1>
+              <table className="table is-striped">
+                <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Team</th>
-                    <th> </th>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Team</th>
+                      <th> </th>
+                    </tr>
                   </tr>
-                </tr>
-              </thead>
-              {players.map((player, i) => (
-                <tbody>
-                  <tr
-                    className={
-                      this.state.selectedPlayer === this.state.players[i]
-                        ? "is-danger is-selected"
-                        : null
-                    }
+                </thead>
+                {players.map((player, i) => (
+                  <tbody>
+                    <tr
+                      className={
+                        this.state.selectedPlayer === this.state.players[i]
+                          ? "is-danger is-selected"
+                          : null
+                      }
+                    >
+                      <Player key={player.id} {...player} />
+                      <td>
+                        <button
+                          className="button is-small"
+                          value={player}
+                          onClick={() => this.handleSelectPlayer(player)}
+                        >
+                          Edit
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                ))}
+              </table>
+              {this.state.playerSelected ? (
+                <div>
+                  <EditPlayer
+                    player={this.state.selectedPlayer}
+                    onSubmit={this.updatePlayer}
+                    deletePlayer={this.deletePlayer}
+                  />
+                  <button
+                    className="button is-small is-danger is-outlined"
+                    onClick={() => this.handleCancelEdit()}
                   >
-                    <Player key={player.id} {...player} />
-                    <td>
-                      <button
-                        className="button is-small"
-                        value={player}
-                        onClick={() => this.handleSelectPlayer(player)}
-                      >
-                        Edit
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              ))}
-            </table>
-            {this.state.playerSelected ? (
-              <div>
-                <EditPlayer
-                  player={this.state.selectedPlayer}
-                  onSubmit={this.updatePlayer}
-                  deletePlayer={this.deletePlayer}
-                />
-                <button
-                  className="button is-small is-danger is-outlined"
-                  onClick={() => this.handleCancelEdit()}
-                >
-                  Cancel
-                </button>
-              </div>
-            ) : null}
-            {this.state.showCreatePlayer ? (
-              <div>
-                <NewPlayer onSubmit={this.createPlayer} />
-                <button
-                  className="button is-small is-danger is-outlined"
-                  onClick={() => this.handleCancelNew()}
-                >
-                  Cancel
-                </button>
-              </div>
-            ) : (
-              <div className="container">
-                <button
-                  className="button is-small is-info is-outlined"
-                  onClick={() => this.handleShowNew()}
-                >
-                  Add New
-                </button>
-              </div>
-            )}
+                    Cancel
+                  </button>
+                </div>
+              ) : null}
+              {this.state.showCreatePlayer ? (
+                <div>
+                  <NewPlayer onSubmit={this.createPlayer} />
+                  <button
+                    className="button is-small is-danger is-outlined"
+                    onClick={() => this.handleCancelNew()}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              ) : (
+                <div className="container">
+                  <button
+                    className="button is-small is-info is-outlined"
+                    onClick={() => this.handleShowNew()}
+                  >
+                    Add New
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 export default PlayersList;
