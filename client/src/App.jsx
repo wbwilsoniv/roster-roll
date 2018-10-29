@@ -14,62 +14,6 @@ import {
 import "./App.css";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      players: [],
-      games: [],
-      playerSelected: false
-    };
-    this.createGame = this.createGame.bind(this);
-    this.handleSelect = this.handleSelect.bind(this);
-    // this.handleEditPlayer = this.handleEditPlayer.bind(this);
-  }
-
-  componentDidMount() {
-    fetchPlayers().then(data => this.setState({ players: data }));
-    fetchGames().then(data => this.setState({ games: data }));
-  }
-  // handleEditPlayer(player) {
-  //   // const player = this.state.players[0];
-  //   // this.setState({
-  //   //   player: player
-  //   // });
-  // }
-
-  createGame(game) {
-    saveGame(game).then(data => {
-      fetchGames().then(data => this.setState({ games: data }));
-    });
-  }
-
-  deletePlayer(id) {
-    deletePlayer(id).then(data => {
-      fetchPlayers().then(data => this.setState({ players: data }));
-    });
-  }
-
-  handleSelect(id) {
-    fetchOnePlayer(id).then(data => {
-      this.setState({ selectedPlayer: data });
-    });
-  }
-
-  handleCreatePlayer(player) {
-    const players = this.state.players;
-    this.setState({
-      players: [...players, player]
-    });
-    console.log(players, player);
-  }
-
-  handleCreateGame(game) {
-    const games = this.state.games;
-    this.setState({
-      games: [...games, game]
-    });
-  }
-
   render() {
     return (
       <Router>
@@ -78,9 +22,9 @@ class App extends Component {
             <div class="navbar-brand">
               <div class="navbar-item">
                 <img
-                  src="https://user-images.githubusercontent.com/38361826/47593746-82313080-d946-11e8-868d-8fef1bd919b9.png"
+                  src="https://user-images.githubusercontent.com/38361826/47681453-ddaa2b00-db9f-11e8-8d1f-0786f61b9e23.png"
                   alt="logo"
-                  style={{ width: `auto` }}
+                  style={{ height: "153px", width: `auto` }}
                 />
               </div>
             </div>
