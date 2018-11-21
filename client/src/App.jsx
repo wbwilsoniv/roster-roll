@@ -3,14 +3,6 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from "./components/Home";
 import PlayersList from "./components/PlayersList";
 import GamesList from "./components/GamesList";
-import {
-  fetchPlayers,
-  fetchGames,
-  saveGame,
-  deletePlayer,
-  fetchOnePlayer
-  // fetchOneGame,
-} from "./services/api";
 import "./App.css";
 
 class App extends Component {
@@ -50,7 +42,7 @@ class App extends Component {
               </div>
             </header>
           </div>
-          <div>
+          <div className="container has-text-centered">
             <Route exact path="/" component={Home} />
             <Route exact path="/players" component={PlayersList} />
             <Route exact path="/games" component={GamesList} />

@@ -96,78 +96,80 @@ class PlayersList extends Component {
     } else {
       return (
         <div className="section">
-          <div className="columns is-centered">
-            <div className="column is-narrow">
-              <h1 className="title">Player List</h1>
-              <table className="table is-striped">
-                <thead>
-                  <tr>
+          <div className="container has-text-center">
+            <div className="columns is-centered">
+              <div className="column is-narrow">
+                <h1 className="title">Player List</h1>
+                <table className="table is-striped">
+                  <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>Name</th>
-                      <th>Team</th>
-                      <th> </th>
+                      <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Team</th>
+                        <th> </th>
+                      </tr>
                     </tr>
-                  </tr>
-                </thead>
-                {players.map((player, i) => (
-                  <tbody>
-                    <tr
-                      className={
-                        this.state.selectedPlayer === this.state.players[i]
-                          ? "is-danger is-selected"
-                          : null
-                      }
+                  </thead>
+                  {players.map((player, i) => (
+                    <tbody>
+                      <tr
+                        className={
+                          this.state.selectedPlayer === this.state.players[i]
+                            ? "is-danger is-selected"
+                            : null
+                        }
+                      >
+                        <Player key={player.id} {...player} />
+                        <td>
+                          <button
+                            className="button is-small"
+                            value={player}
+                            onClick={() => this.handleSelectPlayer(player)}
+                          >
+                            Edit
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  ))}
+                </table>
+                {this.state.playerSelected ? (
+                  <div>
+                    <EditPlayer
+                      player={this.state.selectedPlayer}
+                      onSubmit={this.updatePlayer}
+                      deletePlayer={this.deletePlayer}
+                    />
+                    <button
+                      className="button is-small is-danger is-outlined"
+                      onClick={() => this.handleCancelEdit()}
                     >
-                      <Player key={player.id} {...player} />
-                      <td>
-                        <button
-                          className="button is-small"
-                          value={player}
-                          onClick={() => this.handleSelectPlayer(player)}
-                        >
-                          Edit
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                ))}
-              </table>
-              {this.state.playerSelected ? (
-                <div>
-                  <EditPlayer
-                    player={this.state.selectedPlayer}
-                    onSubmit={this.updatePlayer}
-                    deletePlayer={this.deletePlayer}
-                  />
-                  <button
-                    className="button is-small is-danger is-outlined"
-                    onClick={() => this.handleCancelEdit()}
-                  >
-                    Cancel
-                  </button>
-                </div>
-              ) : null}
-              {this.state.showCreatePlayer ? (
-                <div>
-                  <NewPlayer onSubmit={this.createPlayer} />
-                  <button
-                    className="button is-small is-danger is-outlined"
-                    onClick={() => this.handleCancelNew()}
-                  >
-                    Cancel
-                  </button>
-                </div>
-              ) : (
-                <div className="container">
-                  <button
-                    className="button is-small is-info is-outlined"
-                    onClick={() => this.handleShowNew()}
-                  >
-                    Add New
-                  </button>
-                </div>
-              )}
+                      Cancel
+                    </button>
+                  </div>
+                ) : null}
+                {this.state.showCreatePlayer ? (
+                  <div>
+                    <NewPlayer onSubmit={this.createPlayer} />
+                    <button
+                      className="button is-small is-danger is-outlined"
+                      onClick={() => this.handleCancelNew()}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                ) : (
+                  <div className="container">
+                    <button
+                      className="button is-small is-info is-outlined"
+                      onClick={() => this.handleShowNew()}
+                    >
+                      Add New
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
